@@ -16,13 +16,13 @@ def test_transformTextEmptyTextShouldBeEmpty():
 
 def test_transformTextMultipleWhiteSpaceShouldBeRemoved():
     preprocessorObj=preprocessor()
-    transformed=preprocessorObj.transformText("  juice46     says apple loves coconut ")
-    assert(transformed=="juice says apple loves coconut")
+    transformed=preprocessorObj.transformText("  juice46     say apple love coconut ")
+    assert(transformed=="juice say apple love coconut")
 
 def test_transformTextNumbersShouldBeRemoved():
     preprocessorObj=preprocessor()
-    transformed=preprocessorObj.transformText("1324 969https")
-    assert(transformed=="https")
+    transformed=preprocessorObj.transformText("1324 969http")
+    assert(transformed=="http")
 
 def test_transformTextWordsWithAnyLengthShouldNotBeRemoved():
     preprocessorObj=preprocessor()
@@ -31,8 +31,8 @@ def test_transformTextWordsWithAnyLengthShouldNotBeRemoved():
 
 def test_transformTextWordsShorterThanThreeShouldBeRemoved():
     preprocessorObj=preprocessor()
-    transformed=preprocessorObj.transformText("apes zoo ok", 3)
-    assert(transformed=="apes zoo")
+    transformed=preprocessorObj.transformText("ape zoo ok", 3)
+    assert(transformed=="ape zoo")
 
 def test_transformTextPunctuationShouldBeRemoved():
     preprocessorObj=preprocessor()
