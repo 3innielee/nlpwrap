@@ -24,5 +24,6 @@ class preprocessor():
         text = gensim.corpora.textcorpus.strip_multiple_whitespaces(text)
         text = text.strip()
         text = text.lower()
+        text = gensim.parsing.preprocessing.strip_numeric(text)
         
         return text
