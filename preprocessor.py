@@ -11,7 +11,7 @@ class preprocessor():
     def __init__(self):
         return None
 
-    def transformText(self, text):
+    def transformText(self, text, word_size=3):
         """
         input
             text(str): text to be processed
@@ -25,5 +25,7 @@ class preprocessor():
         
         text = text.lower()
         text = gensim.parsing.preprocessing.strip_numeric(text)
+        filtered_words = gensim.corpora.textcorpus.remove_short(filtered_words, minsize=word_size)
+        text = " ".join(filtered_words)
         text = text.strip()
         return text

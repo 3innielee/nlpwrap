@@ -23,3 +23,8 @@ def test_transformTextNumbersShouldBeRemoved():
     preprocessorObj=preprocessor()
     transformed=preprocessorObj.transformText("1324 969https")
     assert(transformed=="https")
+
+def test_transformTextWordsWithAnyLengthShouldNotBeRemoved():
+    preprocessorObj=preprocessor()
+    transformed=preprocessorObj.transformText("a b c d e f g hi jkl m n", 0)
+    assert(transformed=="a b c d e f g hi jkl m n")
