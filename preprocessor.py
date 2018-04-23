@@ -2,7 +2,8 @@
 import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.feature_extraction.text import CountVectorizer
-from nltk.corpus import stopwords  
+from nltk.corpus import stopwords 
+from nltk.stem import WordNetLemmatizer 
 from gensim import parsing
 import gensim
 import re
@@ -28,8 +29,9 @@ class preprocessor():
 
         text = gensim.parsing.preprocessing.strip_punctuation(text)
 
+        lemm = WordNetLemmatizer()
         stops = set(stopwords.words(stopword_lang))
-        filtered_words=[word for word in text.split() if word not in stops]
+        filtered_words=[lemm.lemmatize(word) for word in text.split() if word not in stops]
 
         filtered_words = gensim.corpora.textcorpus.remove_short(filtered_words, minsize=word_size)
 

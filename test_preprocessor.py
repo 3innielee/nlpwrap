@@ -43,3 +43,8 @@ def test_transformTextEnglishStopwordsShouldBeRemoved():
     preprocessorObj=preprocessor()
     transformed=preprocessorObj.transformText("Don't tell me")
     assert(transformed=="tell")
+
+def test_transformTextLemmatizedLeavesShouldBeLeaf():
+    preprocessorObj=preprocessor()
+    transformed=preprocessorObj.transformText("leaves")
+    assert(transformed=="leaf")
