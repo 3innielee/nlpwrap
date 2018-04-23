@@ -4,47 +4,53 @@ from preprocessor import preprocessor
 def test_setup():
     assert(1 == 1)
 
-def test_transformTextCapitalShouldBeLowercase():
+def test_getTransformedStringCapitalShouldBeLowercase():
     preprocessorObj=preprocessor()
-    transformed=preprocessorObj.transformText("HELLO")
+    transformed=preprocessorObj.getTransformedString("HELLO")
     assert(transformed=="hello")
 
-def test_transformTextEmptyTextShouldBeEmpty():
+def test_getTransformedStringEmptyTextShouldBeEmpty():
     preprocessorObj=preprocessor()
-    transformed=preprocessorObj.transformText("")
+    transformed=preprocessorObj.getTransformedString("")
     assert(transformed=="")
 
-def test_transformTextMultipleWhiteSpaceShouldBeRemoved():
+def test_getTransformedStringMultipleWhiteSpaceShouldBeRemoved():
     preprocessorObj=preprocessor()
-    transformed=preprocessorObj.transformText("  juice46     say apple love coconut ")
+    transformed=preprocessorObj.getTransformedString("  juice46     say apple love coconut ")
     assert(transformed=="juice say apple love coconut")
 
-def test_transformTextNumbersShouldBeRemoved():
+def test_getTransformedStringNumbersShouldBeRemoved():
     preprocessorObj=preprocessor()
-    transformed=preprocessorObj.transformText("1324 969http")
+    transformed=preprocessorObj.getTransformedString("1324 969http")
     assert(transformed=="http")
 
-def test_transformTextWordsWithAnyLengthShouldNotBeRemoved():
+def test_getTransformedStringWordsWithAnyLengthShouldNotBeRemoved():
     preprocessorObj=preprocessor()
-    transformed=preprocessorObj.transformText("a b c d e f g hi jkl m n", 0)
+    transformed=preprocessorObj.getTransformedString("a b c d e f g hi jkl m n", 0)
     assert(transformed=="b c e f g hi jkl n")
 
-def test_transformTextWordsShorterThanThreeShouldBeRemoved():
+def test_getTransformedStringWordsShorterThanThreeShouldBeRemoved():
     preprocessorObj=preprocessor()
-    transformed=preprocessorObj.transformText("ape zoo ok", 3)
+    transformed=preprocessorObj.getTransformedString("ape zoo ok", 3)
     assert(transformed=="ape zoo")
 
-def test_transformTextPunctuationShouldBeRemoved():
+def test_getTransformedStringPunctuationShouldBeRemoved():
     preprocessorObj=preprocessor()
-    transformed=preprocessorObj.transformText(".?!, text")
+    transformed=preprocessorObj.getTransformedString(".?!, text")
     assert(transformed=="text")
 
-def test_transformTextEnglishStopwordsShouldBeRemoved():
+def test_getTransformedStringEnglishStopwordsShouldBeRemoved():
     preprocessorObj=preprocessor()
-    transformed=preprocessorObj.transformText("Don't tell me")
+    transformed=preprocessorObj.getTransformedString("Don't tell me")
     assert(transformed=="tell")
 
-def test_transformTextLemmatizedLeavesShouldBeLeaf():
+def test_getTransformedStringLemmatizedLeavesShouldBeLeaf():
     preprocessorObj=preprocessor()
-    transformed=preprocessorObj.transformText("leaves")
+    transformed=preprocessorObj.getTransformedString("leaves")
     assert(transformed=="leaf")
+
+def test_getTransformedListLemmatizedLeavesShouldBeLeaf():
+    preprocessorObj=preprocessor()
+    transformed=preprocessorObj.getTransformedString("leaves")
+    assert(transformed==["leaf"])
+
