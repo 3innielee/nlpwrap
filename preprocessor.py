@@ -22,8 +22,8 @@ class preprocessor():
             (str): a string of extracted words seperated with a single whitespace.
         """
         text = gensim.corpora.textcorpus.strip_multiple_whitespaces(text)
-        text = text.strip()
+        
         text = text.lower()
         text = gensim.parsing.preprocessing.strip_numeric(text)
-        
+        text = text.strip()
         return text
