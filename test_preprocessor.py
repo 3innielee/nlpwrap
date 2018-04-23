@@ -54,3 +54,8 @@ def test_getTransformedListLemmatizedLeavesShouldBeLeaf():
     transformed=preprocessorObj.getTransformedList("leaves")
     assert(transformed==["leaf"])
 
+def test_getTransformedListThreeWordsShouldAListOfThreeElements():
+    preprocessorObj=preprocessor()
+    transformed=preprocessorObj.getTransformedList("three sausage dogs")
+    assert(transformed==["three", "sausage", "dog"])
+
