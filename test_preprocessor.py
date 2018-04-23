@@ -13,3 +13,8 @@ def test_transformTextEmptyTextShouldBeEmpty():
     preprocessorObj=preprocessor()
     transformed=preprocessorObj.transformText("")
     assert(transformed=="")
+
+def test_transformTextMultipleWhiteSpaceShouldBeRemoved():
+    preprocessorObj=preprocessor()
+    transformed=preprocessorObj.transformText("  juice46     says apple loves coconut ")
+    assert(transformed=="juice46 apple love coconut")
