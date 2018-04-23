@@ -33,3 +33,8 @@ def test_transformTextWordsShorterThanThreeShouldBeRemoved():
     preprocessorObj=preprocessor()
     transformed=preprocessorObj.transformText("apes zoo ok", 3)
     assert(transformed=="apes zoo")
+
+def test_transformTextPunctuationShouldBeRemoved():
+    preprocessorObj=preprocessor()
+    transformed=preprocessorObj.transformText(".?!, text")
+    assert(transformed=="text")

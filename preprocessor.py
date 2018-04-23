@@ -25,6 +25,9 @@ class preprocessor():
         
         text = text.lower()
         text = gensim.parsing.preprocessing.strip_numeric(text)
+
+        text = gensim.parsing.preprocessing.strip_punctuation(text)
+        
         filtered_words=[word for word in text.split()]
         filtered_words = gensim.corpora.textcorpus.remove_short(filtered_words, minsize=word_size)
         text = " ".join(filtered_words)
