@@ -1,0 +1,4 @@
+[
+  "test_preprocessor.py::test_setup",
+  "test_preprocessor.py::test_transformTextCapitalShouldBeLowercase"
+]
