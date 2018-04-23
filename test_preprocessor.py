@@ -51,6 +51,6 @@ def test_getTransformedStringLemmatizedLeavesShouldBeLeaf():
 
 def test_getTransformedListLemmatizedLeavesShouldBeLeaf():
     preprocessorObj=preprocessor()
-    transformed=preprocessorObj.getTransformedString("leaves")
+    transformed=preprocessorObj.getTransformedList("leaves")
     assert(transformed==["leaf"])
 
