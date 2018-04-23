@@ -10,5 +10,15 @@ import re
 class preprocessor():
     def __init__(self):
         return None
-    def transformText():
-        return
+    def transformText(text):
+        """
+        input
+            text(str): text to be processed
+            word_size(int): the minimum length of words that will be kept in the output.
+            stopword_lang(str): lowercase language name used for choosing stopwords 
+
+        output
+            (str): a string of extracted words seperated with a single whitespace.
+        """
+        text = text.lower()
+        return text
