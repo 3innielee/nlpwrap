@@ -10,7 +10,7 @@ import re
 class preprocessor():
     def __init__(self):
         return None
-        
+
     def transformText(self, text):
         """
         input
@@ -21,5 +21,8 @@ class preprocessor():
         output
             (str): a string of extracted words seperated with a single whitespace.
         """
+        text = gensim.corpora.textcorpus.strip_multiple_whitespaces(text)
+
         text = text.lower()
+        
         return text
