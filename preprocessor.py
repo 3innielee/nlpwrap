@@ -12,7 +12,14 @@ class preprocessor():
     def __init__(self):
         return None
 
-    def transformText(self, text, word_size=3, stopword_lang="english"):
+    def getTransformedString(self, text, word_size=3, stopword_lang="english"):
+        filtered_list=self._transformText(text, word_size, stopword_lang)
+        return " ".join(filtered_list)
+
+    def getTransformedList(self, text, word_size=3, stopword_lang="english"):
+        return self._transformText(text, word_size, stopword_lang)
+
+    def _transformText(self, text, word_size, stopword_lang):
         """
         input
             text(str): text to be processed
@@ -20,10 +27,10 @@ class preprocessor():
             stopword_lang(str): lowercase language name used for choosing stopwords 
 
         output
-            (str): a string of extracted words seperated with a single whitespace.
+            (list): a list of extracted words.
         """
         text = gensim.corpora.textcorpus.strip_multiple_whitespaces(text)
-        
+        text = text.strip()
         text = text.lower()
         text = gensim.parsing.preprocessing.strip_numeric(text)
 
@@ -33,8 +40,6 @@ class preprocessor():
         stops = set(stopwords.words(stopword_lang))
         filtered_words=[lemm.lemmatize(word) for word in text.split() if word not in stops]
 
-        filtered_words = gensim.corpora.textcorpus.remove_short(filtered_words, minsize=word_size)
-
-        text = " ".join(filtered_words)
-        text = text.strip()
-        return text
+        filtered_words = gensim.corpora.textcorpus.remove_short(filtered_words, minsize=word_size)     
+        
+        return filtered_words
