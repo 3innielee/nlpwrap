@@ -27,7 +27,7 @@ def test_transformTextNumbersShouldBeRemoved():
 def test_transformTextWordsWithAnyLengthShouldNotBeRemoved():
     preprocessorObj=preprocessor()
     transformed=preprocessorObj.transformText("a b c d e f g hi jkl m n", 0)
-    assert(transformed=="a b c d e f g hi jkl m n")
+    assert(transformed=="b c e f g hi jkl n")
 
 def test_transformTextWordsShorterThanThreeShouldBeRemoved():
     preprocessorObj=preprocessor()
