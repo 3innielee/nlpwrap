@@ -1,5 +1,11 @@
 [
   "test_preprocessor.py::test_setup",
   "test_preprocessor.py::test_transformTextCapitalShouldBeLowercase",
-  "test_preprocessor.py::test_transformTextEmptyTextShouldBeEmpty"
+  "test_preprocessor.py::test_transformTextEmptyTextShouldBeEmpty",
+  "test_preprocessor.py::test_transformTextMultipleWhiteSpaceShouldBeRemoved",
+  "test_preprocessor.py::test_transformTextNumbersShouldBeRemoved",
+  "test_preprocessor.py::test_transformTextWordsWithAnyLengthShouldNotBeRemoved",
+  "test_preprocessor.py::test_transformTextWordsShorterThanThreeShouldBeRemoved",
+  "test_preprocessor.py::test_transformTextPunctuationShouldBeRemoved",
+  "test_preprocessor.py::test_transformTextEnglishStopwordsShouldBeRemoved"
 ]
