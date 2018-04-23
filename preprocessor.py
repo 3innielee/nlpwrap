@@ -10,6 +10,7 @@ import re
 class preprocessor():
     def __init__(self):
         return None
+        
     def transformText(self, text):
         """
         input
