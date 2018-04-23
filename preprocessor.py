@@ -11,7 +11,7 @@ class preprocessor():
     def __init__(self):
         return None
 
-    def transformText(self, text, word_size=3):
+    def transformText(self, text, word_size=3, stopword_lang="english"):
         """
         input
             text(str): text to be processed
@@ -27,9 +27,12 @@ class preprocessor():
         text = gensim.parsing.preprocessing.strip_numeric(text)
 
         text = gensim.parsing.preprocessing.strip_punctuation(text)
-        
-        filtered_words=[word for word in text.split()]
+
+        stops = set(stopwords.words(stopword_lang))
+        filtered_words=[word for word in text.split() if word not in stops]
+
         filtered_words = gensim.corpora.textcorpus.remove_short(filtered_words, minsize=word_size)
+
         text = " ".join(filtered_words)
         text = text.strip()
         return text

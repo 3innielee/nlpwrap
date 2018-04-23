@@ -38,3 +38,8 @@ def test_transformTextPunctuationShouldBeRemoved():
     preprocessorObj=preprocessor()
     transformed=preprocessorObj.transformText(".?!, text")
     assert(transformed=="text")
+
+def test_transformTextEnglishStopwordsShouldBeRemoved():
+    preprocessorObj=preprocessor()
+    transformed=preprocessorObj.transformText("Don't tell me")
+    assert(transformed=="tell")
